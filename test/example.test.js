@@ -2,10 +2,12 @@
 // import { example } from '../example.js';
 
 import { renderDoughnut } from '../Products/utils.js';
+import { findById } from '../Cart/cartutils.js';
+import { doughnuts } from '../Products/doughnuts.js';
 
 const test = QUnit.test;
 
-test('time to test a function', (expect) => {
+test('test if renderDoughnut creates listed elements', (expect) => {
     //Arrange
     const glazed = {
         id: 1,
@@ -25,4 +27,25 @@ test('time to test a function', (expect) => {
     //Expect
     // Make assertions about what is expected versus the actual result
     expect.equal(actual.outerHTML, expected);
+});
+
+test('tests findById function', (expect) => {
+        // Set up your arguments and expectations
+    const expected =
+     {
+         id: 2,
+         name: 'Old-Fashioned',
+         image: 'old-fashioned.jpeg',
+         description: 'Doughnut made with sour cream and a tapered edge',
+         specialty: false,
+         price: '.60',
+     };
+    
+        //Act 
+        // Call the function you're testing and set the result to a const
+    const actual = findById(2, doughnuts);
+    
+        //Expect
+        // Make assertions about what is expected versus the actual result
+    expect.deepEqual(actual, expected);
 });

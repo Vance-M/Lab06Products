@@ -2,7 +2,7 @@
 // import { example } from '../example.js';
 
 import { renderDoughnut } from '../Products/utils.js';
-import { findById } from '../Cart/cartutils.js';
+import { calcItemTotal, findById } from '../Cart/cartutils.js';
 import { doughnuts } from '../Products/doughnuts.js';
 
 const test = QUnit.test;
@@ -29,7 +29,7 @@ test('test if renderDoughnut creates listed elements', (expect) => {
     expect.equal(actual.outerHTML, expected);
 });
 
-test('tests findById function', (expect) => {
+test('tests findById function with old fashioned doughtnuts', (expect) => {
         // Set up your arguments and expectations
     const expected =
      {
@@ -48,4 +48,17 @@ test('tests findById function', (expect) => {
         //Expect
         // Make assertions about what is expected versus the actual result
     expect.deepEqual(actual, expected);
+});
+
+test('tests calcItemTotal function for 2 old fashioned doughnuts', (expect) => {
+    // Set up your arguments and expectations
+    const expected = '1.20';
+
+    //Act 
+    // Call the function you're testing and set the result to a const
+    const actual = calcItemTotal(2);
+
+    //Expect
+    // Make assertions about what is expected versus the actual result
+    expect.equal(actual, expected);
 });

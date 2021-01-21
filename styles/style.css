@@ -85,7 +85,11 @@ content {
 }
 
 table {
-    align-items: center;
+    text-align: center;
+}
+th {
+    font-weight: bolder;
+    border-bottom: black solid 1px;
 }
 
 .dough-item {

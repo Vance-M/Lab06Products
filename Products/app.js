@@ -1,7 +1,6 @@
 // import functions and grab DOM elements
 import { doughnuts } from './doughnuts.js';
 import { renderDoughnut } from './utils.js';
-console.log(doughnuts);
 const list = document.getElementById('list');
 // initialize state
 

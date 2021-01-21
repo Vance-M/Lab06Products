@@ -14,7 +14,7 @@ export function calcItemTotal(id) {
     const doughnutA = findById(id, doughnuts);
     const quantityA = findById(id, cart);
 
-    const itemTotalA = Number(doughnutA.price) * quantityA.quantity;
+    const itemTotalA = doughnutA.price * quantityA.quantity;
     const itemTotalTrue = Math.round(itemTotalA * 100) / 100;
     return itemTotalTrue.toFixed(2);
 }

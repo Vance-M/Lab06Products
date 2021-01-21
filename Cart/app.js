@@ -13,9 +13,9 @@ let total = 0;
 
 for (let item of cart) {
     const doughnut = findById(item.id, doughnuts);
-    const totalForThisDoughnut = calcItemTotal(item.id);
-
-    total = total + Number(totalForThisDoughnut);
+    const totalForThisDoughnutF = calcItemTotal(item.id);
+    const totalForThisDoughnutA = Math.round(totalForThisDoughnutF * 100) / 100;
+    total = total + Number(totalForThisDoughnutA);
     const tableRowDOM = renderLineItems(item, doughnut);
 
     table.append(tableRowDOM);
@@ -26,7 +26,7 @@ const td1 = document.createElement('td');
 const td2 = document.createElement('td');
 const td3 = document.createElement('td');
 
-td3.textContent = `Order total: $${total}`;
+td3.textContent = `Order total: $${total.toFixed(2)}`;
 
 tr.append(td1, td2, td3);
 

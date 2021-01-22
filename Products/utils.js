@@ -1,3 +1,6 @@
+
+import { addToCart } from '../Cart/cartutils.js';
+
 export function renderDoughnut(doughnut) {
     const li = document.createElement('h3');
     li.classList.add('dough-item');
@@ -32,6 +35,10 @@ export function renderDoughnut(doughnut) {
     li.append(pPrice);
 
     const button = document.createElement('button');
+    button.addEventListener('click', () => {
+        addToCart(doughnut.id);
+    });
+
     button.textContent = 'Add to Cart';
     li.append(button);
 

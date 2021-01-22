@@ -55,7 +55,6 @@ test('tests calcItemTotal function for 2 old fashioned doughnuts', (expect) => {
     // Set up your arguments and expectations
     const expected = '1.20';
 
-    //Act 
     // Call the function you're testing and set the result to a const
     const actual = calcItemTotal(2);
 

@@ -1,9 +1,9 @@
 import { doughnuts } from '../Products/doughnuts.js';
-import { cart } from '../Cart/data.js';
+// import { cart } from '../Cart/data.js';
 export const currentCart = 'currentCart';
 export const defaultCart = [];
 
-
+const cart = getCart();
 
 export function findById(id, array) {
     for (let item of array) {
@@ -16,10 +16,10 @@ export function findById(id, array) {
 export function calcItemTotal(id) {
     const doughnutA = findById(id, doughnuts);
     const quantityA = findById(id, cart);
-
     const itemTotalA = doughnutA.price * quantityA.quantity;
     const itemTotalTrue = Math.round(itemTotalA * 100) / 100;
     return itemTotalTrue.toFixed(2);
+
 }
 
 export function renderLineItems(cart, doughnuts) {
@@ -33,7 +33,7 @@ export function renderLineItems(cart, doughnuts) {
 
     nameTd.textContent = doughnuts.name;
     quantityTd.textContent = quantityB;
-    priceTd.textContent = `$${calcItemTotal(2)}`;
+    priceTd.textContent = `$${calcItemTotal(doughnuts.id)}`;
 
     tr.append(nameTd);
     tr.append(quantityTd);
@@ -67,4 +67,19 @@ export function setCart(cart) {
     const cartString = JSON.stringify(cart);
 
     localStorage.setItem(currentCart, cartString);
+}
+
+export function addToCart(id) {
+    const cart = getCart();
+    const cartItem = findById(id, cart);
+    if (cartItem) {
+        cartItem.quantity++;
+    } else {
+        const newItem = {
+            id: id,
+            quantity: 1
+        };
+        cart.push(newItem);
+    }
+    setCart(cart);
 }

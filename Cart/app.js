@@ -1,10 +1,10 @@
 // Data
 import { doughnuts } from '../Products/doughnuts.js';
-import { cart } from './data.js';
+// import { cart } from './data.js';
 // Functions
 
-import { renderLineItems, calcItemTotal, findById } from './cartutils.js';
-
+import { renderLineItems, calcItemTotal, findById, getCart } from './cartutils.js';
+const cart = getCart();
 // 
 
 const table = document.querySelector('table');
@@ -17,7 +17,6 @@ for (let item of cart) {
     const totalForThisDoughnutA = Math.round(totalForThisDoughnutF * 100) / 100;
     total = total + Number(totalForThisDoughnutA);
     const tableRowDOM = renderLineItems(item, doughnut);
-
     table.append(tableRowDOM);
 }
 

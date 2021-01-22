@@ -2,9 +2,9 @@
 // import { example } from '../example.js';
 
 import { renderDoughnut } from '../Products/utils.js';
-import { renderLineItems, calcItemTotal, findById, getCart, currentCart, } from '../Cart/cartutils.js';
+import { renderLineItems, calcItemTotal, findById, getCart, currentCart, clearCart, setCart } from '../Cart/cartutils.js';
 import { doughnuts } from '../Products/doughnuts.js';
-
+import { cart } from '../Cart/data.js';
 
 const test = QUnit.test;
 
@@ -87,11 +87,63 @@ test('tests renderLineItems for correct cart display row', (expect) => {
     expect.equal(actual.outerHTML, expected);
 });
 
+
+
 test('tests getCart', (expect) => {
     // Set up your arguments and expectations
+    localStorage.setItem(currentCart, JSON.stringify([{ greeting:'hello' }]));
+    const expected = 	
+    [
+        {
+            'greeting': 'hello'
+        }
+    ];
 
-    const expected = [];
+    //Act 
+    // Call the function you're testing and set the result to a const
+    const actual = getCart(currentCart);
 
+    //Expect
+    // Make assertions about what is expected versus the actual result
+    expect.deepEqual(actual, expected);
+});
+
+test('tests clearCart', (expect) => {
+    // Set up your arguments and expectations
+
+    const expected = '[]';
+
+    //Act 
+    // Call the function you're testing and set the result to a const
+    clearCart();
+    const actual = localStorage.getItem(currentCart);
+    //Expect
+    // Make assertions about what is expected versus the actual result
+    expect.deepEqual(actual, expected);
+});
+
+test('tests setCart', (expect) => {
+    // Set up your arguments and expectations
+
+    const expected = [
+        {
+            'id': 1,
+            'quantity': 6
+        },
+        {
+            'id': 2,
+            'quantity': 2
+        },
+        {
+            'id': 4,
+            'quantity': 2
+        },
+        {
+            'id': 7,
+            'quantity': 2
+        }
+    ];
+    setCart(cart);
     //Act 
     // Call the function you're testing and set the result to a const
     const actual = getCart(currentCart);

@@ -56,3 +56,15 @@ export function getCart() {
         return defaultCart;
     }
 }
+
+export function clearCart() {
+    const cartString = JSON.stringify(defaultCart);
+
+    localStorage.setItem(currentCart, cartString);
+}
+
+export function setCart(cart) {
+    const cartString = JSON.stringify(cart);
+
+    localStorage.setItem(currentCart, cartString);
+}

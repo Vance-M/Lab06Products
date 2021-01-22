@@ -54,9 +54,21 @@ test('tests findById function with old fashioned doughtnuts', (expect) => {
 test('tests calcItemTotal function for 2 old fashioned doughnuts', (expect) => {
     // Set up your arguments and expectations
     const expected = '1.20';
+    const TestCartItem = {
+        id: 2,
+        quantity: 2
+    };
+    const TestDoughnutItem = {
+        id: 2,
+        name: 'Old-Fashioned',
+        image: 'old-fashioned.jpeg',
+        description: 'Doughnut made with sour cream and a tapered edge',
+        specialty: false,
+        price: '.60',
+    };
 
     // Call the function you're testing and set the result to a const
-    const actual = calcItemTotal(2);
+    const actual = calcItemTotal(TestCartItem, TestDoughnutItem);
 
     //Expect
     // Make assertions about what is expected versus the actual result

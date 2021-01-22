@@ -1,9 +1,9 @@
-import { doughnuts } from '../Products/doughnuts.js';
-// import { cart } from '../Cart/data.js';
+// import { doughnuts } from '../Products/doughnuts.js';
+// import { cart as cartArray } from '../Cart/data.js';
 export const currentCart = 'currentCart';
 export const defaultCart = [];
 
-const cart = getCart();
+// const cart = getCart();
 
 export function findById(id, array) {
     for (let item of array) {
@@ -13,17 +13,14 @@ export function findById(id, array) {
     }
 }
 
-export function calcItemTotal(id) {
-    const doughnutA = findById(id, doughnuts);
-    const quantityA = findById(id, cart);
-    const itemTotalA = doughnutA.price * quantityA.quantity;
+export function calcItemTotal(cartItem, doughnut) {
+    const itemTotalA = doughnut.price * cartItem.quantity;
     const itemTotalTrue = Math.round(itemTotalA * 100) / 100;
     return itemTotalTrue.toFixed(2);
-
 }
 
-export function renderLineItems(cart, doughnuts) {
-    const quantityB = cart.quantity;
+export function renderLineItems(cartItem, doughnut) {
+    const quantityB = cartItem.quantity;
 
     const tr = document.createElement('tr');
 
@@ -31,9 +28,9 @@ export function renderLineItems(cart, doughnuts) {
     const quantityTd = document.createElement('td');
     const priceTd = document.createElement('td');
 
-    nameTd.textContent = doughnuts.name;
+    nameTd.textContent = doughnut.name;
     quantityTd.textContent = quantityB;
-    priceTd.textContent = `$${calcItemTotal(doughnuts.id)}`;
+    priceTd.textContent = `$${calcItemTotal(cartItem, doughnut)}`;
 
     tr.append(nameTd);
     tr.append(quantityTd);

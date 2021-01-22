@@ -14,7 +14,7 @@ let total = 0;
 
 for (let item of cart) {
     const doughnut = findById(item.id, doughnuts);
-    const totalForThisDoughnutF = calcItemTotal(item.id);
+    const totalForThisDoughnutF = calcItemTotal(item, doughnut);
     const totalForThisDoughnutA = Math.round(totalForThisDoughnutF * 100) / 100;
     total = total + Number(totalForThisDoughnutA);
     const tableRowDOM = renderLineItems(item, doughnut);
@@ -34,4 +34,5 @@ table.append(tr);
 
 clearCartButton.addEventListener('click', () =>{
     clearCart();
+    window.location.reload();
 });

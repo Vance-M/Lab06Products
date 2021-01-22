@@ -1,5 +1,8 @@
 import { doughnuts } from '../Products/doughnuts.js';
 import { cart } from '../Cart/data.js';
+export const currentCart = 'currentCart';
+export const defaultCart = [];
+
 
 
 export function findById(id, array) {
@@ -37,4 +40,19 @@ export function renderLineItems(cart, doughnuts) {
     tr.append(priceTd);
 
     return tr;
+}
+
+export function getCart() {
+    const cartString = localStorage.getItem(currentCart);
+
+    if (cartString) {
+        const cartParsed = JSON.parse(cartString);
+        return cartParsed;
+    } else {
+        const defaultCartString = JSON.stringify(defaultCart);
+
+        localStorage.setItem(currentCart, defaultCartString);
+
+        return defaultCart;
+    }
 }

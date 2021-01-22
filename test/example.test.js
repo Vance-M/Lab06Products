@@ -2,7 +2,7 @@
 // import { example } from '../example.js';
 
 import { renderDoughnut } from '../Products/utils.js';
-import { renderLineItems, calcItemTotal, findById } from '../Cart/cartutils.js';
+import { renderLineItems, calcItemTotal, findById, getCart, currentCart, } from '../Cart/cartutils.js';
 import { doughnuts } from '../Products/doughnuts.js';
 
 
@@ -85,4 +85,18 @@ test('tests renderLineItems for correct cart display row', (expect) => {
     //Expect
     // Make assertions about what is expected versus the actual result
     expect.equal(actual.outerHTML, expected);
+});
+
+test('tests getCart', (expect) => {
+    // Set up your arguments and expectations
+
+    const expected = [];
+
+    //Act 
+    // Call the function you're testing and set the result to a const
+    const actual = getCart(currentCart);
+
+    //Expect
+    // Make assertions about what is expected versus the actual result
+    expect.deepEqual(actual, expected);
 });

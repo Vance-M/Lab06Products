@@ -91,13 +91,8 @@ test('tests renderLineItems for correct cart display row', (expect) => {
 
 test('tests getCart', (expect) => {
     // Set up your arguments and expectations
-    localStorage.setItem(currentCart, JSON.stringify([{ greeting:'hello' }]));
-    const expected = 	
-    [
-        {
-            'greeting': 'hello'
-        }
-    ];
+    localStorage.setItem(currentCart, JSON.stringify(cart));
+    const expected = cart;
 
     //Act 
     // Call the function you're testing and set the result to a const
@@ -125,24 +120,7 @@ test('tests clearCart', (expect) => {
 test('tests setCart', (expect) => {
     // Set up your arguments and expectations
 
-    const expected = [
-        {
-            'id': 1,
-            'quantity': 6
-        },
-        {
-            'id': 2,
-            'quantity': 2
-        },
-        {
-            'id': 4,
-            'quantity': 2
-        },
-        {
-            'id': 7,
-            'quantity': 2
-        }
-    ];
+    const expected = cart;
     setCart(cart);
     //Act 
     // Call the function you're testing and set the result to a const

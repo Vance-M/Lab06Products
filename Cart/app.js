@@ -1,9 +1,10 @@
 // Data
 import { doughnuts } from '../Products/doughnuts.js';
-// import { cart } from './data.js';
+const clearCartButton = document.getElementById('clear-cart');
+
 // Functions
 
-import { renderLineItems, calcItemTotal, findById, getCart } from './cartutils.js';
+import { renderLineItems, calcItemTotal, findById, getCart, clearCart } from './cartutils.js';
 const cart = getCart();
 // 
 
@@ -30,3 +31,7 @@ td3.textContent = `Order total: $${total.toFixed(2)}`;
 tr.append(td1, td2, td3);
 
 table.append(tr);
+
+clearCartButton.addEventListener('click', () =>{
+    clearCart();
+});

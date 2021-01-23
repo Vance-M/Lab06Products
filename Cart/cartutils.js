@@ -26,6 +26,7 @@ export function renderLineItems(cartItem, doughnut) {
 
     const nameTd = document.createElement('td');
     const quantityTd = document.createElement('td');
+
     const priceTd = document.createElement('td');
 
     nameTd.textContent = doughnut.name;

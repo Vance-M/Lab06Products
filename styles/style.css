@@ -103,7 +103,12 @@ th {
     width: 100px;
 }
 
-
+#add-new-product {
+    height: 100%;
+    display: grid;
+    align-items: center;
+    justify-content:space-evenly;
+}
 
 p {
     margin: var(--gutter);

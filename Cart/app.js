@@ -4,7 +4,7 @@ const clearCartButton = document.getElementById('clear-cart');
 
 // Functions
 
-import { renderLineItems, calcItemTotal, findById, getCart, clearCart } from './cartutils.js';
+import { renderLineItems, calcItemTotal, findById, getCart, clearCart, cartTotal } from './cartutils.js';
 const cart = getCart();
 // 
 
@@ -16,7 +16,7 @@ for (let item of cart) {
     const doughnut = findById(item.id, doughnuts);
     const totalForThisDoughnutF = calcItemTotal(item, doughnut);
     const totalForThisDoughnutA = Math.round(totalForThisDoughnutF * 100) / 100;
-    total = total + Number(totalForThisDoughnutA);
+    total = cartTotal(total, totalForThisDoughnutA);
     const tableRowDOM = renderLineItems(item, doughnut);
     table.append(tableRowDOM);
 }

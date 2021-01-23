@@ -81,3 +81,8 @@ export function addToCart(id) {
     }
     setCart(cart);
 }
+
+export function cartTotal(total, totalForThisDoughnutA) {
+    total = total + Number(totalForThisDoughnutA);
+    return total;
+}
